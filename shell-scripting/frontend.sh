@@ -1,4 +1,12 @@
 dnf install -y nginx
+STATUS=$?
+
+if [ "$STATUS" -eq 0 ]; then
+    echo "Node.js installation successful"
+else
+    echo "Node.js installation failed: exit code $STATUS"
+    exit "$STATUS"
+fi
 
 echo -e \\e[6m Copy nginx configuration \\e[0m
 cp nginx.conf /etc/nginx/nginx.conf
