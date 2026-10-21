@@ -9,6 +9,13 @@ mysql -h localhost -u root -pRoboShop@1 < db/schema.sql
 mysql -h localhost -u root -pRoboShop@1 < db/app-user.sql
 mysql -h localhost -u root -pRoboShop@1 catalogue < db/master-data.sql
 
+useradd -r -s /bin/false appuser
+cd /app
+go mod tidy
+CGO_ENABLED=0 go build -o /app/catalogue .
+chown -R appuser:appuser /app
+chmod o-rwx /app -R
+
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue
