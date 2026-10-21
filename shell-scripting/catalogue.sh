@@ -1,4 +1,6 @@
 
+dnf install -y golang
+
 cp catalogue.service /etc/systemd/system/catalogue.service
 
 curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/catalogue.zip
